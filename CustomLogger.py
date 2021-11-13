@@ -1,17 +1,5 @@
 import logging
 
-def CustomLogger(name: 'str') -> 'logging.Logger':
-    # create logger with "someName"
-    logger = logging.getLogger(name)
-    logger.setLevel(logging.DEBUG)
-
-    # create console handler with a higher log level
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-    ch.setFormatter(CustomFormatter())
-    logger.addHandler(ch)
-    return logger
-
 class CustomFormatter(logging.Formatter):
     """ Logging Formatter to add colors and count warning / errors """
 
@@ -43,6 +31,18 @@ class CustomFormatter(logging.Formatter):
         formatter = logging.Formatter(log_fmt, datefmt='%H:%M:%S')
         return formatter.format(record)
 
+def CustomLogger(name: 'str') -> 'logging.Logger':
+    # create logger with "someName"
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.DEBUG)
+
+    # create console handler with a higher log level
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    ch.setFormatter(CustomFormatter())
+    logger.addHandler(ch)
+    return logger
+    
 if __name__ == "__main__":
     c = CustomFormatter.colors
 
