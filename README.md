@@ -1,5 +1,5 @@
 # DNS Validator
-Maintains a list of IPv4 DNS servers by verifying them against baseline servers, and ensuring accurate responses.
+Filters a list of IPv4 DNS servers by verifying them against baseline servers, and ensuring accurate responses.
 
 Forked from https://github.com/vortexau/dnsvalidator
 
