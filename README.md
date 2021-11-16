@@ -6,7 +6,7 @@ Forked from https://github.com/vortexau/dnsvalidator
 This version is **much** *less* feature rich than the original. However, it doesn't look like the original is being maintained & there is a possibility that it will not return an output (see: https://github.com/vortexau/dnsvalidator/issues/27)
 
 
-[![Python 3.9](https://img.shields.io/badge/python-3.9-green.svg)](https://www.python.org/) [![License](https://img.shields.io/badge/license-GPL3-_red.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html) 
+[![Python 3.9](https://img.shields.io/badge/python-3.9-green.svg)](https://www.python.org/) [![License](https://img.shields.io/badge/license-GPL3-_red.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 ![DNSValidator](https://github.com/frost19k/dnsvalidator/blob/main/screenshots/DNSValidator.png)
 
@@ -33,8 +33,8 @@ This version is **much** *less* feature rich than the original. However, it does
 ❯ cd ./dnsvalidator
 ❯ docker build -t dnsvalidator -f Dockerfile .
 ❯ docker run -t --rm \
-   -v $(pwd):/output \
-   dnsvalidator -t 20 -o /output/resolvers.txt
+   -v $(pwd):/app/output \
+   dnsvalidator -t 20 -o resolvers.txt
 ```
 
 # Caveats
