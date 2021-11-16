@@ -6,9 +6,11 @@ import sys
 import string
 import signal
 import random
+import urllib3
 import argparse
 import numpy as np
 import dns.resolver
+
 
 from concurrent.futures import ThreadPoolExecutor
 from CustomLogger import CustomLogger, CustomFormatter
@@ -115,7 +117,7 @@ def main():
 
     parser.add_argument(
         "-i", "--input", help="File containing Public DNS Server",
-        action="store", type=str, required=True
+        action="store", type=str, required=False, default=''
     )
     parser.add_argument(
         "-o", "--output", help="Output File to store validated DNS Servers",
@@ -165,13 +167,26 @@ def main():
 
         responses[baseline] = baseline_server
 
-    ## Loop through the list
-    with open(args.input, 'r') as fin:
-        servers = fin.read().splitlines()
+    ## Fetch Public DNS Servers if INPUT is not provided
+    if args.input:
+        with open(args.input, 'r') as fin:
+            servers = fin.read().splitlines()
+    else:
+        logger.info('No input provided, fetching nameservers from https://public-dns.info', extra={'msgC':''})
+
+        http = urllib3.PoolManager()
+        r = http.request('Get', 'https://public-dns.info/nameservers.txt')
+        servers = r.data.decode().splitlines()
+        filter = re.compile("^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$")
+        servers = [ip for ip in servers if filter.match(ip)]
 
     servers = np.array(servers)
     servers = list(servers[servers != ''])
 
+    if os.path.exists(args.output):
+        os.remove(args.output)
+
+    ## Loop through the list
     with ThreadPoolExecutor(max_workers=int(args.threads)) as executor:
         for server in servers:
             executor.submit(resolve_address, server, args.output)
