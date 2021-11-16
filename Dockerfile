@@ -9,4 +9,5 @@ RUN apk add --no-cache --virtual .deps build-base && \
     pip install --no-cache-dir -r requirements.txt && \
     apk del .deps
 
-ENTRYPOINT [ "python", "DNSValidator.py" ]
+WORKDIR /app/output
+ENTRYPOINT [ "python", "../DNSValidator.py" ]
