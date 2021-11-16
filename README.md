@@ -26,6 +26,17 @@ This version is **much** *less* feature rich than the original. However, it does
 ❯ python3 DNSValidator.py -t 24 -i nameservers.txt -o resolvers.txt
 ```
 
+## Docker:
+
+```bash
+❯ git clone https://github.com/frost19k/dnsvalidator
+❯ cd ./dnsvalidator
+❯ docker build -t dnsvalidator -f Dockerfile .
+❯ docker run -t --rm \
+   -v $(pwd):/output \
+   dnsvalidator -t 20 -o /output/resolvers.txt
+```
+
 # Caveats
 
 * **WARNING** Keep the thread count to a reasonable level and/or use a VPS/VPN appropriately. Pushing the thread count too high can make it look like you are attempting to attack DNS servers, resulting in network level DNS blocks from your ISP.
