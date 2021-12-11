@@ -21,7 +21,7 @@ jobs:
         with:
           images: frost19k/dnsvalidator
           tags: |
-            type=match,pattern=v(.*),group=0
+            type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
 
       - name: Login to Docker Hub
