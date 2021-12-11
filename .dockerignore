@@ -1,2 +1,8 @@
 Dockerfile
+.dockerignore
+.git
+.github
+.gitignore
 .python-version
+README.md
+screenshots
