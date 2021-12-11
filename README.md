@@ -28,13 +28,25 @@ This version is **much** *less* feature rich than the original. However, it does
 
 ## Docker:
 
+#### Pull the image
+```bash
+❯ docker pull frost19k/dnsvalidator
+```
+
+OR
+
+#### Build it yourself
 ```bash
 ❯ git clone https://github.com/frost19k/dnsvalidator
 ❯ cd ./dnsvalidator
-❯ docker build -t dnsvalidator -f Dockerfile .
-❯ docker run -t --rm \
-   -v $(pwd):/app/output \
-   dnsvalidator -t 20 -o resolvers.txt
+❯ docker buildx build -t dnsvalidator -f Dockerfile .
+```
+
+#### Run the container
+```bash
+❯ docker run -it --rm \
+    -v "$(pwd)":"/output" \
+    dnsvalidator -t 100 -o resolvers.txt
 ```
 
 # Caveats
