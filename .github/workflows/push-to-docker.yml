@@ -7,7 +7,7 @@ on:
     tags:
       - 'v*'
   schedule:
-    - cron: '0 4 3 * *' # Run at 4:00 AM UTC on 3rd of every month
+    - cron: '0 4 * * MON' # Run at 04:00 UTC every MONDAY
 
 jobs:
   push_to_registry:
