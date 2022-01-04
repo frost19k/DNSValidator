@@ -8,7 +8,7 @@ Filters a list of IPv4 DNS servers by verifying them against baseline servers, a
 
 <p align="left"><img src="screenshots/DNSValidator.png" width="650"></p>
 
-# Installation
+# Installation:
 ```bash
 ❯ git clone https://github.com/frost19k/DNSValidator.git
 ❯ cd DNSValidator/
@@ -29,28 +29,28 @@ Filters a list of IPv4 DNS servers by verifying them against baseline servers, a
 
 ## Docker:
 
-#### From Docker Hub
+#### From Docker Hub:
 ```bash
 ❯ docker pull frost19k/dnsvalidator
 ```
 
 OR
 
-#### Build it yourself
+#### Build it yourself:
 ```bash
 ❯ git clone -b DNSValidator https://github.com/frost19k/Dockerfiles.git ./dnsvalidator
 ❯ cd ./dnsvalidator
 ❯ docker buildx build -t dnsvalidator -f Dockerfile .
 ```
 
-#### Run the container
+#### Run the container:
 ```bash
 ❯ docker run -it --rm \
   -v "${PWD}":"/output" \
   dnsvalidator -t 100 -o resolvers.txt
 ```
 
-# Caveats
+# Caveats:
 
 * **WARNING** Keep the thread count to a reasonable level and/or use a VPS/VPN appropriately. Pushing the thread count too high can make it look like you are attempting to attack DNS servers, resulting in network level DNS blocks from your ISP.
 * Only IPv4 DNS Resolvers are validated at the current time. IPv6 resolvers are skipped.
