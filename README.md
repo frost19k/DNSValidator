@@ -8,14 +8,6 @@ Filters a list of IPv4 DNS servers by verifying them against baseline servers, a
 
 <p align="left"><img src="screenshots/DNSValidator.png" width="650"></p>
 
-# Usage
-
-| Argument      | Description                                                                                                  |
-|---------------|--------------------------------------------------------------------------------------------------------------|
-| -t  --threads | Specify the number of concurrent threads (Default: 2)
-| -i  --input   | Specify the file name containing Public DNS Servers (Default: https://public-dns.info/)
-| -o  --output  | Specify the file name to save the validated DNS Servers (Required)
-
 # Installation
 ```bash
 ❯ git clone https://github.com/frost19k/DNSValidator.git
@@ -23,8 +15,14 @@ Filters a list of IPv4 DNS servers by verifying them against baseline servers, a
 ❯ pip3 install .
 ```
 # Usage:
-
 ## CLI:
+
+| Argument      | Description                                                                                                  |
+|---------------|--------------------------------------------------------------------------------------------------------------|
+| -t  --threads | Specify the number of concurrent threads (Default: 2)
+| -i  --input   | Specify the file name containing Public DNS Servers (Default: https://public-dns.info/)
+| -o  --output  | Specify the file name to save the validated DNS Servers (Required)
+#### Example:
 ```bash
 ❯ dnsvalidator -t 24 -i nameservers.txt -o resolvers.txt
 ```
