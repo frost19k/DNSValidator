@@ -12,21 +12,26 @@ Filters a list of IPv4 DNS servers by verifying them against baseline servers, a
 
 | Argument      | Description                                                                                                  |
 |---------------|--------------------------------------------------------------------------------------------------------------|
-| -t  --threads | Specify the number of concurrent threads
-| -i  --input   | Specify the file name containing Public DNS Servers
-| -o  --output  | Specify the file name to save the validated DNS Servers
+| -t  --threads | Specify the number of concurrent threads (Default: 2)
+| -i  --input   | Specify the file name containing Public DNS Servers (Default: https://public-dns.info/)
+| -o  --output  | Specify the file name to save the validated DNS Servers (Required)
 
-# Examples:
+# Installation
+```bash
+❯ git clone https://github.com/frost19k/DNSValidator.git
+❯ cd DNSValidator/
+❯ pip3 install .
+```
+# Usage:
 
 ## CLI:
-
 ```bash
-❯ python3 DNSValidator.py -t 24 -i nameservers.txt -o resolvers.txt
+❯ dnsvalidator -t 24 -i nameservers.txt -o resolvers.txt
 ```
 
 ## Docker:
 
-#### Pull the image
+#### From Docker Hub
 ```bash
 ❯ docker pull frost19k/dnsvalidator
 ```
@@ -35,7 +40,7 @@ OR
 
 #### Build it yourself
 ```bash
-❯ git clone https://github.com/frost19k/dnsvalidator
+❯ git clone -b DNSValidator https://github.com/frost19k/Dockerfiles.git ./dnsvalidator
 ❯ cd ./dnsvalidator
 ❯ docker buildx build -t dnsvalidator -f Dockerfile .
 ```
@@ -43,8 +48,8 @@ OR
 #### Run the container
 ```bash
 ❯ docker run -it --rm \
-    -v "$(pwd)":"/output" \
-    dnsvalidator -t 100 -o resolvers.txt
+  -v "${PWD}":"/output" \
+  dnsvalidator -t 100 -o resolvers.txt
 ```
 
 # Caveats

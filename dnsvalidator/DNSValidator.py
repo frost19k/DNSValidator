@@ -13,7 +13,7 @@ import dns.resolver
 
 
 from concurrent.futures import ThreadPoolExecutor
-from CustomLogger import CustomLogger, CustomFormatter
+from .CustomLogger import CustomLogger, CustomFormatter
 
 ## Configr Logging
 logger = CustomLogger('DNSValidator')
@@ -172,7 +172,7 @@ def main():
         with open(args.input, 'r') as fin:
             servers = fin.read().splitlines()
     else:
-        logger.info('No input provided, fetching nameservers from https://public-dns.info', extra={'msgC':''})
+        logger.info('No input provided, fetching nameservers from https://public-dns.info', extra={'msgC':c['cyan']})
 
         http = urllib3.PoolManager()
         r = http.request('Get', 'https://public-dns.info/nameservers.txt')
