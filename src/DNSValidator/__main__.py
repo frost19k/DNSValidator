@@ -77,7 +77,7 @@ def main():
 
     ##->> Run the script
     fn.run(
-        servers=servers[:128:8],
+        servers=servers,
         workers=args.threads,
         rootDom=args.root_domain,
         fileName=args.output_file,
