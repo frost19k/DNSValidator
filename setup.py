@@ -1,20 +1,12 @@
-""" __Doc__ File handle class """
-from setuptools import find_packages, setup
-from dnsvalidator.__version__ import __version__
+#!/usr/bin/env python3
 
-setup(
-    name="DNSValidator",
-    version=__version__,
-    url="https://github.com/frost19k/DNSValidator",
-    license="GPLv3",
-    description="Filters a list of IPv4 DNS Servers by verifying them against baseline servers.",
-    author="Hoodly Twokeys",
-    author_email="hoodlytwokeys@gmail.com",
-    packages=find_packages(),
-    entry_points={
-        'console_scripts': ['dnsvalidator=dnsvalidator.DNSValidator:main']
-    },
-    install_requires=open('requirements.txt').read().splitlines(),
-    include_package_data=False,
-    zip_safe=False
-)
+import sys
+from pkg_resources import parse_version
+from setuptools import setup, __version__
+
+if parse_version(__version__) < parse_version('62.6'):
+    print('Your setuptools version is incompatible with this package. Upgrade setuptools to continue the installation.')
+    sys.exit(1)
+
+if __name__ == '__main__':
+    setup()

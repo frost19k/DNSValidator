@@ -1,0 +1,4 @@
+{"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\Q-t --threads Number of concurrent threads (Default: 2)\n-i --input File containing Public DNS Servers (Default: https://public-dns.info/)\n-o --output Output file name (Default: resolvers.txt)\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\Q-i --input File containing Public DNS Servers (Default: public-dns.info)\n-o --output Output file name (Default: resolvers.txt)\n-t --threads Number of concurrent threads (Default: 2)\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QDNSValidator's approach is different to other DNS query validation tools.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_RULE","sentence":"^\\Q-i, --input File containing Public DNS Servers (Default: public-dns.info)\n-o, --output Output file name (Default: \"./resolvers.txt\")\n-t, --threads Number of concurrent threads (Default: 2)\\E$"}
