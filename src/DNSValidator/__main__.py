@@ -10,13 +10,10 @@ import pathlib as pl
 from typing import List
 
 from . import functions as fn
-from . import environment as env
-
+from .environment import regex
 from .banner import print_banner
 from .version import __version__
-
 from .CustomLogger import colors as c
-from .CustomLogger import add_CustomFileHandler
 
 logger = logging.getLogger('DNSValidator')
 
@@ -51,8 +48,6 @@ def main():
     if not args.quiet: print_banner()
 
     ##->> Fetch Public DNS Servers if INPUT is not provided
-    from .environment import regex
-
     if args.input_file:
         if pl.Path(args.input_file).exists():
             logger.info(f'Reading nameserver list from file...', extra={'msgC':c['cyan']})
